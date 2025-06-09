@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Que Telemóvel é Ideal para a Mariazinha?</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+    h1, h2 { color: #2a2a2a; }
+    label { display: block; margin: 8px 0; }
+    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>📱 Que Telemóvel é Ideal para a Mariazinha?</h1>
+  <form id="quizForm">
+    <h2>1. Como achas o ecrã do teu telemóvel atual?</h2>
+    <label><input type="radio" name="q1" value="escuro"> Por vezes parece escuro ao sol.</label>
+    <label><input type="radio" name="q1" value="cores"> As cores não são muito vivas.</label>
+    <label><input type="radio" name="q1" value="nitido"> Queria ver vídeos mais nítidos.</label>
+    <label><input type="radio" name="q1" value="ok"> Está bom como está.</label>
+
+    <h2>2. Como gostavas que fossem as fotos?</h2>
+    <label><input type="radio" name="q2" value="nitidas"> Mais nítidas e com cores bonitas.</label>
+    <label><input type="radio" name="q2" value="selfies"> Que tirasse melhores selfies.</label>
+    <label><input type="radio" name="q2" value="noite"> Que tirasse boas fotos à noite.</label>
+    <label><input type="radio" name="q2" value="pouco"> Só um bocadinho melhores.</label>
+
+    <h2>3. Quanto espaço precisas para fotos e apps?</h2>
+    <label><input type="radio" name="q3" value="nao"> Não preciso de mais.</label>
+    <label><input type="radio" name="q3" value="mais"> Se der sem gastar muito, melhor.</label>
+    <label><input type="radio" name="q3" value="tanto"> Quanto mais melhor!</label>
+
+    <h2>4. O que mais usas no dia a dia?</h2>
+    <label><input type="checkbox" name="q4" value="whatsapp"> WhatsApp / Chamadas</label>
+    <label><input type="checkbox" name="q4" value="youtube"> Ver vídeos / YouTube</label>
+    <label><input type="checkbox" name="q4" value="redes"> Facebook / Instagram / TikTok</label>
+    <label><input type="checkbox" name="q4" value="fotos"> Tirar fotos e vídeos</label>
+    <label><input type="checkbox" name="q4" value="jogos"> Jogar jogos simples</label>
+
+    <h2>5. Queres que o telemóvel seja:</h2>
+    <label><input type="radio" name="q5" value="leve"> Mais leve e fácil de segurar</label>
+    <label><input type="radio" name="q5" value="normal"> Do tamanho habitual</label>
+    <label><input type="radio" name="q5" value="naosei"> Nunca pensei nisso</label>
+
+    <h2>6. Quanto tempo queres que dure a bateria?</h2>
+    <label><input type="radio" name="q6" value="rapido"> Que carregue mais rápido</label>
+    <label><input type="radio" name="q6" value="duracao"> Que dure mais tempo</label>
+    <label><input type="radio" name="q6" value="tanto"> Ambas as coisas</label>
+
+    <h2>7. Extras que gostavas que tivesse:</h2>
+    <label><input type="checkbox" name="q7" value="resistente"> Resistente à água e pó</label>
+    <label><input type="checkbox" name="q7" value="sol"> Que o ecrã se veja bem ao sol</label>
+    <label><input type="checkbox" name="q7" value="zoom"> Que tenha bom zoom na câmara</label>
+    <label><input type="checkbox" name="q7" value="grande"> Que tenha letras maiores ou seja fácil de usar</label>
+
+    <button type="button" onclick="getRecommendation()">Ver recomendação</button>
+  </form>
+
+  <div id="result" class="hidden">
+    <h2>✅ Recomendação para ti:</h2>
+    <p id="phoneSuggestion"></p>
+    <p><a id="phoneLink" href="#" target="_blank">Ver telemóvel</a></p>
+  </div>
+
+  <script>
+    function getRecommendation() {
+      const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+      const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+      const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+      const q5 = document.querySelector('input[name="q5"]:checked')?.value;
+      const q6 = document.querySelector('input[name="q6"]:checked')?.value;
+      const q4 = Array.from(document.querySelectorAll('input[name="q4"]:checked')).map(el => el.value);
+      const q7 = Array.from(document.querySelectorAll('input[name="q7"]:checked')).map(el => el.value);
+
+      let phone = "";
+      let link = "#";
+
+      if (q7.includes("resistente") || q7.includes("sol")) {
+        phone = "OPPO Reno 13FS 5G (€254,90)";
+        link = "https://www.vodafone.pt/loja/telemoveis/oppo/reno-13fs-5g.html?color=preto%20grafite&storage=512&segment=consumer&paymentType=cv";
+      } else if (q2 === "noite" || (q2 === "nitidas" && q3 !== "nao" && q4.includes("fotos"))) {
+        phone = "Honor Magic6 Lite 5G (€220)";
+        link = "https://www.vodafone.pt/loja/telemoveis/honor/magic6-lite-5g.html?color=verde&storage=256&segment=consumer&paymentType=cv";
+      } else if (q2 === "nitidas" && q3 === "nao") {
+        phone = "Xiaomi Redmi Note 14 5G (€189,90)";
+        link = "https://www.vodafone.pt/loja/telemoveis/xiaomi/redmi-note-14-5g.html?segment=consumer&color=preto&storage=256&paymentType=cv";
+      } else if (q2 === "selfies" || q4.includes("redes")) {
+        phone = "Honor Magic7 Lite 5G (€228,90)";
+        link = "https://www.vodafone.pt/loja/telemoveis/honor/magic7-lite-5g.html?color=preto&storage=512&segment=consumer&paymentType=pvp";
+      } else if (q3 === "tanto") {
+        phone = "OPPO Reno 12FS 5G (€229,90)";
+        link = "https://www.vodafone.pt/loja/telemoveis/oppo/reno-12-fs-5g.html?segment=consumer&color=verde&storage=512&paymentType=cv";
+      } else if (q1 === "escuro" || q1 === "cores" || q4.includes("youtube")) {
+        phone = "OPPO Reno 13F 5G (€199,90)";
+        link = "https://www.vodafone.pt/loja/telemoveis/oppo/reno-13f-5g.html?segment=consumer&color=preto%20grafite&storage=256&paymentType=pvp";
+      } else if (q2 === "pouco" && q3 === "nao" && q5 === "leve" && q7.includes("grande")) {
+        phone = "OPPO Reno 12 F 5G (€157,90)";
+        link = "https://www.vodafone.pt/loja/telemoveis/oppo/reno-12-f-5g.html?segment=consumer&color=verde&storage=256&paymentType=cv";
+      } else {
+        phone = "Honor 200 5G (€215,90)";
+        link = "https://www.vodafone.pt/loja/telemoveis/honor/200-5g.html?segment=consumer&color=preto&storage=512&paymentType=cv";
+      }
+
+      document.getElementById("phoneSuggestion").textContent = phone;
+      document.getElementById("phoneLink").href = link;
+      document.getElementById("result").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
