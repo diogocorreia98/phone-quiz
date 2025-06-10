@@ -60,6 +60,7 @@
   <div id="result" class="hidden">
     <h2>✅ Recomendação para ti:</h2>
     <p id="phoneSuggestion"></p>
+    <p id="phoneReason"></p>
     <p><a id="phoneLink" href="#" target="_blank">Ver telemóvel</a></p>
   </div>
 
@@ -75,32 +76,41 @@
 
       let phone = "";
       let link = "#";
+      let reason = "";
 
         if (q2 === "noite" || (q2 === "nitidas" && q3 !== "nao" && q4.includes("fotos"))) {
         phone = "Honor Magic6 Lite 5G (€220)";
         link = "https://www.vodafone.pt/loja/telemoveis/honor/magic6-lite-5g.html?color=verde&storage=256&segment=consumer&paymentType=cv";
+        reason = "Ótimo para fotos noturnas e para guardares muitas recordações.";
       } else if (q2 === "nitidas" && q3 === "nao") {
         phone = "Xiaomi Redmi Note 14 5G (€189,90)";
         link = "https://www.vodafone.pt/loja/telemoveis/xiaomi/redmi-note-14-5g.html?segment=consumer&color=preto&storage=256&paymentType=cv";
+        reason = "Ideal se queres fotos nítidas sem complicações nem custos altos.";
       } else if (q2 === "selfies" || q4.includes("redes")) {
         phone = "Honor Magic7 Lite 5G (€228,90)";
         link = "https://www.vodafone.pt/loja/telemoveis/honor/magic7-lite-5g.html?color=preto&storage=512&segment=consumer&paymentType=pvp";
+        reason = "Perfeito para selfies e redes sociais, sempre com desempenho rápido.";
       } else if (q3 === "tanto") {
         phone = "OPPO Reno 12FS 5G (€229,90)";
         link = "https://www.vodafone.pt/loja/telemoveis/oppo/reno-12-fs-5g.html?segment=consumer&color=verde&storage=512&paymentType=cv";
+        reason = "Tens muito espaço para apps, fotos e tudo o que precisares.";
       } else if (q1 === "escuro" || q1 === "cores" || q4.includes("youtube")) {
         phone = "OPPO Reno 13F 5G (€199,90)";
         link = "https://www.vodafone.pt/loja/telemoveis/oppo/reno-13f-5g.html?segment=consumer&color=preto%20grafite&storage=256&paymentType=pvp";
+        reason = "Ecrã brilhante e cores vivas, ideal para veres vídeos onde quiseres.";
       } else if (q2 === "pouco" && q3 === "nao" && q5 === "leve" && q7.includes("grande")) {
         phone = "OPPO Reno 12 F 5G (€157,90)";
         link = "https://www.vodafone.pt/loja/telemoveis/oppo/reno-12-f-5g.html?segment=consumer&color=verde&storage=256&paymentType=cv";
+        reason = "Leve e simples de usar, com letras grandes para maior conforto.";
       } else {
         phone = "Honor 200 5G (€215,90)";
         link = "https://www.vodafone.pt/loja/telemoveis/honor/200-5g.html?segment=consumer&color=preto&storage=512&paymentType=cv";
+        reason = "Equilíbrio perfeito entre desempenho e preço para o dia a dia.";
       }
 
       document.getElementById("phoneSuggestion").textContent = phone;
       document.getElementById("phoneLink").href = link;
+      document.getElementById("phoneReason").textContent = reason;
       document.getElementById("result").classList.remove("hidden");
     }
   </script>
